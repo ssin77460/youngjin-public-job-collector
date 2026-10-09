@@ -1,4 +1,8 @@
 import http from 'node:http';
+import {setDefaultResultOrder,lookup} from 'node:dns';
+import {setDefaultAutoSelectFamily} from 'node:net';
+setDefaultResultOrder('ipv4first');setDefaultAutoSelectFamily(false);
+lookup('www.findjob.co.kr',{all:true},(error,addresses)=>console.log('Source DNS',error?.code,addresses));
 import {timingSafeEqual} from 'node:crypto';
 import {collectFindjobJobs} from './findjob.mjs';
 const key=process.env.COLLECTOR_KEY;
