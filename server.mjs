@@ -15,7 +15,7 @@ http.createServer(async(req,res)=>{
  try{
   const searches=[],details={};
   const result=await collectFindjobJobs({FINDJOB_FETCH:async(url,options)=>{
-   const response=await fetch(url,options);if(!response.ok)return response;
+   let response;try{response=await fetch(url,options);}catch(error){console.error('Upstream connection',new URL(url).hostname,error.name,error.cause?.code,error.cause?.message);throw error;}if(!response.ok)return response;
    const data=await response.clone().json();
    if(new URL(url).pathname.endsWith('/search'))searches.push(data.data.result);
    else details[JSON.parse(options.body).adId]=data.data;
