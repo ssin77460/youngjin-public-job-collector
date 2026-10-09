@@ -1,0 +1,1 @@
+{"name":"youngjin-public-job-collector","private":true,"type":"module","engines":{"node":">=22"},"scripts":{"start":"node server.mjs"}}
