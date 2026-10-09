@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: youngjin-public-job-collector
+    runtime: node
+    plan: free
+    buildCommand: npm install --ignore-scripts
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: COLLECTOR_KEY
+        generateValue: true
